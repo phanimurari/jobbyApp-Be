@@ -1,0 +1,29 @@
+POST http://localhost:8005/api/auth/register
+Content-Type: application/json
+
+{
+  "username": "john_doe",
+  "email": "john@example.com",
+  "password": "password123"
+}
+
+###
+
+POST http://localhost:8005/api/auth/login
+Content-Type: application/json
+
+{
+  "email": "john@example.com",
+  "password": "password123"
+}
+
+###
+
+POST http://localhost:8005/api/todos
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4NjAxMTI1ZjdlYmRlZmQ3MDIwZjgyOCIsImlhdCI6MTc1MTEyNjQxMywiZXhwIjoxNzUxNzMxMjEzfQ.vSj6HwwaUnWLrDZWCbEIjPFBlVrSxt4HwUR4LFw0w5Y
+Content-Type: application/json
+
+{
+  "title": "Complete project",
+  "description": "Finish the todo app with authentication"
+}
