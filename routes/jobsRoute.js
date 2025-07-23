@@ -1,6 +1,7 @@
 const express = require('express');
 const Job = require('../models/Job');
 const auth = require('../middleware/auth');
+const { default: ADMIN_ROLE } = require('../config');
 
 const router = express.Router();
 
@@ -67,7 +68,7 @@ router.get('/:id', auth, async (req, res, next) => {
 // @route   POST /jobs
 // @desc    Create a new job
 // @access  Private
-router.post('/', auth(['admin']), async (req, res, next) => {
+router.post('/', auth(ADMIN_ROLE), async (req, res, next) => {
   try {
     const { company_logo_url, employment_type, job_description, location, package_per_annum, rating, title } = req.body;
 
