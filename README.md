@@ -1,6 +1,6 @@
-API 1: https://apis.ccbp.in/jobs
+API 1: https://jobbyapp-be.onrender.com/api/jobs
 
-Example: https://apis.ccbp.in/jobs?employment_type=FULLTIME,PARTTIME&minimum_package=1000000&search=
+Example: https://jobbyapp-be.onrender.com/api/jobs?employment_type=FULLTIME,PARTTIME&minimum_package=1000000&search=
 Method: GET
 Description: Returns a response containing the list of all jobs
 
@@ -28,12 +28,12 @@ Sample Response
 **CURL Example:**
 
 ```bash
-curl -X GET "https://apis.ccbp.in/jobs?employment_type=FULLTIME,PARTTIME&minimum_package=1000000&search=" -H "Authorization: Bearer YOUR_JWT_TOKEN"
+curl -X GET "https://jobbyapp-be.onrender.com/api/jobs?employment_type=FULLTIME,PARTTIME&minimum_package=1000000&search=" -H "Authorization: Bearer YOUR_JWT_TOKEN"
 ```
 
-API 2: https://apis.ccbp.in/jobs/:id
+API 2: https://jobbyapp-be.onrender.com/api/jobs/:id
 
-Example: https://apis.ccbp.in/jobs bb95e51b-b1b2-4d97-bee4-1d5ec2b96751
+Example: https://jobbyapp-be.onrender.com/api/jobs bb95e51b-b1b2-4d97-bee4-1d5ec2b96751
 
 Method: GET
 
@@ -78,34 +78,6 @@ Sample Response
 }
 ```
 
-**CURL Example:**
-
-```bash
-curl -X GET "https://apis.ccbp.in/jobs/bb95e51b-b1b2-4d97-bee4-1d5ec2b96751" -H "Authorization: Bearer YOUR_JWT_TOKEN"
-```
-
-**API 3: https://apis.ccbp.in/jobs**
-
-Method: POST
-
-Description: Creates a new job
-
-**CURL Example:**
-
-```bash
-curl -X POST "https://apis.ccbp.in/jobs" \
--H "Content-Type: application/json" \
--H "Authorization: Bearer YOUR_JWT_TOKEN" \
--d '{
-  "company_logo_url": "https://assets.ccbp.in/frontend/react-js/jobby-app/facebook-img.png",
-  "employment_type": "Full Time",
-  "job_description": "We’re in search of a Back-End Software Engineer that specializes in server-side components. In this role, you’ll primarily work in NodeJs, SQL Lite, Python, AWS and GO and will bring a depth of knowledge on basic algorithms and data structures. As a Back-End Engineer, you might be architecting new features for our customers.",
-  "location": "Bangalore",
-  "package_per_annum": "21 LPA",
-  "rating": 4,
-  "title": "Backend Engineer"
-}'
-
 ## Authentication Routes
 
 ### Register
@@ -115,10 +87,10 @@ curl -X POST -H "Content-Type: application/json" -d '{
   "username": "testuser",
   "email": "test@example.com",
   "password": "password123"
-}' http://localhost:8005/api/auth/register
+}' https://jobbyapp-be.onrender.com/api/auth/register
+```
 
 **Note:** This route requires admin authentication.
-```
 
 ### Login
 
@@ -126,13 +98,19 @@ curl -X POST -H "Content-Type: application/json" -d '{
 curl -X POST -H "Content-Type: application/json" -d '{
   "email": "test@example.com",
   "password": "password123"
-}' http://localhost:8005/api/auth/login
+}' https://jobbyapp-be.onrender.com/api/auth/login
 ```
 
 ### Get Current User
 
 ```bash
-curl -X GET -H "Authorization: Bearer <token>" http://localhost:8005/api/auth/me
+curl -X GET -H "Authorization: Bearer <token>" https://jobbyapp-be.onrender.com/api/auth/me
+```
+
+### Get Profile
+
+```bash
+curl -X GET -H "Authorization: Bearer <token>" https://jobbyapp-be.onrender.com/api/auth/profile
 ```
 
 ## Job Routes
@@ -140,13 +118,13 @@ curl -X GET -H "Authorization: Bearer <token>" http://localhost:8005/api/auth/me
 ### Get All Jobs
 
 ```bash
-curl -X GET -H "Authorization: Bearer <token>" http://localhost:8005/api/jobs
+curl -X GET -H "Authorization: Bearer <token>" https://jobbyapp-be.onrender.com/api/jobs
 ```
 
 ### Get a Single Job
 
 ```bash
-curl -X GET -H "Authorization: Bearer <token>" http://localhost:8005/api/jobs/64bca149996c93156695499a
+curl -X GET -H "Authorization: Bearer <token>" https://jobbyapp-be.onrender.com/api/api/jobs/64bca149996c93156695499a
 ```
 
 ### Create a New Job
@@ -160,5 +138,33 @@ curl -X POST -H "Content-Type: application/json" -H "Authorization: Bearer <toke
   "package_per_annum": "120000",
   "rating": "4.5",
   "title": "Software Engineer"
-}' http://localhost:8005/api/jobs
+}' https://jobbyapp-be.onrender.com/api/jobs
 ```
+
+**CURL Example:**
+
+```bash
+curl -X GET "https://jobbyapp-be.onrender.com/api/jobs/bb95e51b-b1b2-4d97-bee4-1d5ec2b96751" -H "Authorization: Bearer YOUR_JWT_TOKEN"
+```
+
+**API 3: https://jobbyapp-be.onrender.com/api/jobs**
+
+Method: POST
+
+Description: Creates a new job
+
+**CURL Example:**
+
+```bash
+curl -X POST "https://jobbyapp-be.onrender.com/api/jobs" \
+-H "Content-Type: application/json" \
+-H "Authorization: Bearer YOUR_JWT_TOKEN" \
+-d '{
+  "company_logo_url": "https://assets.ccbp.in/frontend/react-js/jobby-app/facebook-img.png",
+  "employment_type": "Full Time",
+  "job_description": "We’re in search of a Back-End Software Engineer that specializes in server-side components. In this role, you’ll primarily work in NodeJs, SQL Lite, Python, AWS and GO and will bring a depth of knowledge on basic algorithms and data structures. As a Back-End Engineer, you might be architecting new features for our customers.",
+  "location": "Bangalore",
+  "package_per_annum": "21 LPA",
+  "rating": 4,
+  "title": "Backend Engineer"
+}'

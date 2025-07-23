@@ -131,4 +131,25 @@ router.get('/me', auth, async (req, res, next) => {
   }
 });
 
+// @route   GET /api/auth/profile
+// @desc    Get user profile details
+// @access  Private
+router.get('/profile', auth([]), async (req, res, next) => {
+  try {
+    // Get the authenticated user's information from req.user (set by auth middleware)
+    const profile_details = {
+      name: req.user.username, // Use the actual username from JWT token
+      profile_image_url: "https://assets.ccbp.in/frontend/react-js/male-avatar-img.png",
+      short_bio: "Lead Software Developer and AI-ML expert"
+    };
+
+    res.status(200).json({
+      success: true,
+      profile_details
+    });
+  } catch (error) {
+    next(error);
+  }
+});
+
 module.exports = router;
