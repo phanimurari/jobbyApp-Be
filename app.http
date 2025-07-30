@@ -27,3 +27,28 @@ Content-Type: application/json
   "title": "Complete project",
   "description": "Finish the todo app with authentication"
 }
+
+###
+
+GET http://localhost:8005/api/blogs
+Content-Type: application/json
+
+###
+
+GET http://localhost:8005/api/blogs?title=project
+Content-Type: application/json
+
+###
+
+GET http://localhost:8005/api/blogs?category=Technology
+Content-Type: application/json
+
+###
+
+GET http://localhost:8005/api/blogs?sortby=latest
+Content-Type: application/json
+
+###
+
+GET http://localhost:8005/api/blogs?sortby=oldest
+Content-Type: application/json

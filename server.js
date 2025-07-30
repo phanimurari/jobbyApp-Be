@@ -8,7 +8,7 @@ dotenv.config();
 
 // Import routes
 const authRoute = require('./routes/authRoute');
-const jobsRoute = require('./routes/jobsRoute');
+const blogsRoute = require('./routes/blogsRoute');
 
 // Import middleware
 const errorLogger = require('./middleware/errorLogger');
@@ -20,7 +20,7 @@ app.use(express.json());
 
 // Routes
 app.use('/api/auth', authRoute);
-app.use('/api/jobs', jobsRoute);
+app.use('/api/blogs', blogsRoute);
 
 // Error handling middleware (should be last)
 app.use(errorLogger);

@@ -25,7 +25,7 @@ const auth = (roles = []) => { // Define the auth middleware function that accep
 
       const user = await User.findById(decoded.id); // Find the user by the ID in the decoded token
 
-      if (!user) { // Check if the user exists
+      if (!user) { // Check if the user not exists
         return res.status(404).json({ // If not, return a 404 Not Found error
           success: false, // Set success to false
           message: 'No user found with this id' // Set the error message
